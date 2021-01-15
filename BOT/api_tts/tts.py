@@ -6,10 +6,10 @@ import urllib3
 import shutil
 import sys
 
-sys.path.insert(0, 'C:/Users/nguye/Downloads/SMART_CAR/SMART_CAR/BOT/api_bot_simsimi')
-sys.path.insert(1, 'C:/Users/nguye/Downloads/SMART_CAR/SMART_CAR/BOT/api_stt')
-from stt import stt
-from bot import bot
+# sys.path.insert(0, 'C:/Users/nguye/Downloads/SMART_CAR/SMART_CAR/BOT/api_bot_simsimi')
+# sys.path.insert(1, 'C:/Users/nguye/Downloads/SMART_CAR/SMART_CAR/BOT/api_stt')
+# from stt import stt
+# from bot import bot
 import time
 
 OUTPUT_MP3_FOLDER = 'BOT/api_tts/mp3_file/'

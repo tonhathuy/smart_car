@@ -1,7 +1,7 @@
 import requests
 import sys
-sys.path.insert(0, 'C:/Users/nguye/Downloads/SMART_CAR/SMART_CAR/BOT/api_stt')
-from stt import stt
+# sys.path.insert(0, 'C:/Users/nguye/Downloads/SMART_CAR/SMART_CAR/BOT/api_stt')
+# from stt import stt
 
 import json
 import time
