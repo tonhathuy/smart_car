@@ -26,25 +26,35 @@ def tts(payload):
     }
 
     response = requests.request('POST', url, data=payload.encode('utf-8'), headers=headers).json()
-
-    print(response)
+    # response = {'async': 'https://static.openfpt.vn/text2speech-v5/short/2021-01-15/thuminh.0.b2389f4f086b3c1ae301029eeba0645a.mp3', 'error': 0, 'message': 'The content will be returned after a few seconds under the async link.', 'request_id': '8451557935db92fdf89fe6befe1c2f2f'}
+    # print(response)
     try:
         mp3_file = response['async']
-        mp3_file_name = unidecode(payload).replace(' ', '_') + '.wav'
+        print(mp3_file)
+        mp3_file_name_ = unidecode(payload).replace(' ', '_') 
+        bad_chars = [';', ':', '!', "*", '(' ,')', '.','{', '}','"','+','-','/','@','#','$','%','^','&','*','|']
+        # remove bad_chars
+        mp3_file_name = ''.join((filter(lambda i: i not in bad_chars, mp3_file_name_))) + '.mp3'
         output_mp3_file = os.path.join(OUTPUT_MP3_FOLDER, mp3_file_name)
 
         http = urllib3.PoolManager()
+        time.sleep(1)
         with open(output_mp3_file, 'wb') as out:
             r = http.request('GET', mp3_file, preload_content=False)
-
-        shutil.copyfileobj(r, out)
+            shutil.copyfileobj(r, out)
+        
         playsound.playsound(output_mp3_file)
-    except:
-        print('We cannot convert to speech')
+    except Exception as e:
+        print('We cannot convert to speech', e)
 
 
     t2 = time.time()
     print('Time text to speech:',t2 - t1)
 
 if __name__ == "__main__":
-    tts(bot(stt()))
+    tts('text')
+    # with open(output_mp3_file, 'wb') as out:
+    #         r = http.request('GET', mp3_file, preload_content=False)
+    #         shutil.copyfileobj(r, out)
+        
+    # playsound.playsound(output_mp3_file)

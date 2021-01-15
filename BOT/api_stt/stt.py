@@ -28,6 +28,7 @@ def stt():
     print('Time speech to text:',t2 - t1)
     if response['status'] == 0:
         text = response['hypotheses'][0]['utterance']
+        print('stt request:',text)
         return text
     return ''
 

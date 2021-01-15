@@ -19,11 +19,12 @@ def bot(text):
         'x-rapidapi-host': "simsimi.p.rapidapi.com"
         }
 
-    response = requests.request("GET", url, headers=headers, params=querystring)
-    print(response.text.splitlines()[-2].replace('</body>',''))
+    response = requests.request("GET", url)
+    # print(response.text.splitlines()[-2].replace('</body>',''))
     t2 = time.time()
     dict_responce = json.loads(response.text.splitlines()[-2].replace('</body>',''))    
     print('Time bot:',t2-t1)
+    print('bot response:',dict_responce['text'])
     return dict_responce['text']
 
 if __name__ == "__main__":
